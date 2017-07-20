@@ -1,0 +1,23 @@
+#Question 5:
+
+def f(n):
+    strng = str(n)
+    lst = [0]
+    x = len(strng)-1
+    while x >= 0:
+        if int(strng[x])>= max(lst):
+            lst.append(int(strng[x]))
+            x -= 1
+        else:
+            lst.sort()
+            for value in lst:
+                if value > int(strng[x]):
+                    lst.append(int(strng[x]))
+                    lst.remove(value)
+                    lst.remove(0)
+                    lst.sort()
+                    count = ""
+                    for num in lst:
+                        count += str(num)    
+                    return int(strng[0:x]+ str(value) + count)
+    return -1
